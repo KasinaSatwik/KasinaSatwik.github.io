@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Computer Graphics assignment</title>
+  <!-- bootstrap html link -->
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+  <!-- Font awesome -->
+  <script src="https://kit.fontawesome.com/9d5c3aceed.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+<body>
+
+  <section id="title">
+    <div class="container-fluid">
+
+
+
+        <h1 class="navbar-brand assignment-heading" href="" style="padding-bottom:50px; color:white;" >Computer Graphics assignment 1</h1>
+
+      </nav>
+
+
+
+      <!-- Title -->
+      <div class="container">
+        <div class="row">
+
+
+          <div class="col lg-6 md-12" style="padding-left: 0px" id="dog-div">
+            <h1 class="main-heading">Story</h1>
+            <div class="col lg-6 md-12" >
+              <h1 class="main-heading">The Faithful Dog</h1>
+              <p class="mainstory">
+
+
+          Arun is seen looking at the pets in the pet store through the window, he has always wanted one since he was a kid, but his parents were against it.
+          He then walks back home casually licking his ice cream. At that very moment when he was crossing the road he had a close call with a person who was driving
+          a car while on their phone. Arun falls to the side of the road and the ice cream falls down, when arun gets up he sees the dog eating his icecream. Sad that
+          he lost his precious treat he walks back home, on the way he notices someone was following him. Upon turning around he notices it was the dog! which
+          was eating his icecream he tries to sho it off but it follows him and he finally decides to take it home. On reaching home, his mother was waiting for him
+          but looking at the dog that he bought she shreiked and then scolded him and asked him to leave it where he found it. Arun pleads, and says that he would do it the
+          following day.That night a suspicious van happened to be parked outside the
+
+          house. A person then climbs the back gate and is about to get away with the jewelry of Arun's mother. It just
+
+          so, happens that when he leaves the house  he is met by loud barking and a vicious bite. The
+
+          members of the house wake up and rush to the scene at once.
+
+          They proceed to call the police and the thieves is taken away in shackles. The next day the dog appears in the news papers. The parents then hug the dog.
+
+           The parents then soften up a bit and allow Arun
+
+          to keep the dog under the condition that he takes care of it. Arun is elated and hugs and thanks his parents.
+                      </p>
+
+                      <video width="1280" height="960" controls>
+                        <source src="images/The_Faithful_Dog.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                      </video>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Features -->
+
+  <section id="features">
+    <div class="col lg-4">
+      <h1 class="main-heading" style="color:black; padding-bottom:50px;">Open Gl implementation</h1>
+    </div>
+    <h2 style="padding-bottom:50px; font-size:3rem;">Setting up</h2>
+    <p class="mainstory" style="color:black; padding-bottom:50px;">
+      Language: C++,
+      External libraries: OpenGL,
+      IDE: CodeBlocks, .
+      We made a few props used in the story using the OpenGL library. Namely, we used Bresenhams midpoint linedrawing algorithm,
+      and midpoint circle drawing algoritm both of which were implemented using the OpenGL library in the code blocks IDE.
+    </p>
+      <h2 style="padding-bottom:50px; font-size:3rem;" >Bresenhams linedrawing</h2>
+      <p class="mainstory" style="color:black;padding-bottom:50px;">
+      <img></img>
+      This algorithm uses integer arithmetic and is faster and more efficient that DDA. The main idea behind this alogrithm is
+    to chose between two pixels, depending on whether the point lies inside or outside the curve. The variables x1,x2,y1,y2
+  indicate the endpoints of the line which is to be plotted, the variable m can take value of -1 or 1 depending upon whether the line's slope
+is positive or negative. Here, d is the decision parameter which helps us to take the decision of which pixel is to be colored.
+    <img class="code of line" style="padding:30px;" src="images\circle algo.jpeg"></img>
+  </p>
+
+    <h2 style="padding-bottom:50px;  font-size:3rem;">Midpoint Circle drawing algorithm</h2>
+    <p class="mainstory" style="color:black;padding-bottom:50px;">
+    <img > </img>
+    This algorithm is used to draw circle given the center and the radius. It is also based on the usage of integer arithmetic
+    and is the most optimal algorithm. The main idea behind the algorithm is we divide the circle into eight symmetrical parts
+    and then we take the mirror image about the y=x;y=-x;y=0;x=0. The variable decision is the decision making parameter in our
+    algorithm it is initialised to one minus the radius. We take the help of two variables DeltaE and DeltaSE which helps us to
+    update the decision variable.
+    <img style="padding:30px;" src="images\circle algo.jpeg"> </img>
+
+
+
+    </p>
+<p class="mainstory">
+  <p>Below are the props we have implemented using the OpenGL line drawing and circle drawing algo.</p>
+  <ul>
+    <li>
+    <img src="images\night scene.jpeg" alt=""></img><br>
+    <p>The code for this night scene is  <a href=" code\moon rising code.txt" > this </a>
+    </p></li>
+    <li>  <img src="images\WhatsApp Image 2022-11-10 at 23.17.47.jpeg" alt=""></img><br>
+      <p>The code for this day scene is   <a href="code\sunsetcode.txt " > this </a></p></li>
+      <li><img src="images\window.jpeg" alt=""></img>
+        <p>The code for this window is <a href=" code\window code.txt" > this </a> </p>
+    </p></li>
+  </ul>
+
+
+
+
+  </section>
+
+
+  <!-- Testimonials -->
+
+  <section id="testimonials">
+
+    <div class="StoryBoard-documentation" style="padding:50px;">
+      <h1>Story Board Documentation</h1>
+      <p class="mainstory" style="padding: 50px; margin-left: 90px; margin-right: 90px;">
+        A story Board is a powerful way to plan a narrative using graphic organisation. Most of our favorite movie scenes have been done using
+        story board before their actual implementation.
+        We implemented the Story Board part use the free open source software StoryBoarder .It had many functionalities such as the ability to
+        control the time of each slide and to add audio and notes to each of the slides. It also had it's fair share of limitations such as
+        being unable to work with camera angles and transistions in 2d.
+        We firstly discussed the story scene by scene and had a rough sketch of the various scenes we decided to show.
+        Then we discussed the various elements and their implementation
+        We then discussed what props were to be drawn using OpenGL and where to implement them in the story board.
+        Then we finished drawing the story and we proceeded to do a naration over the story.
+      </p>
+      <p>some of the images done using the storyboarder application are:
+        <img src="images\story board pet shop.jpeg" alt="" style="padding-bottom:50px"></img>
+        <img src="images\story boarder ice.jpeg" alt=""></img>
+      </p>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- Footer -->
+
+  <footer id="footer">
+
+
+
+  <div class="icons-f">
+    <h1>Done by:</h1>
+    <p>
+
+        Nivesh Duppalapudi - 2019A7PS0018H<br>
+        Bharath Potluri    - 2020A8PS1468H<br>
+        Vaibhav Jha        - 2019A7PS0132H <br>
+        Satwik Kasina - 2019A7PS0011H
+
+
+    </p>
+
+  </div>
+
+
+
+  </footer>
+
+
+</body>
+
+</html>

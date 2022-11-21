@@ -1,0 +1,168 @@
+#include <windows.h>
+#include <GL/glut.h>
+
+void init_()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0f, 500.0f, 0.0f, 500.0f);
+}
+
+
+void plot(int x, int y)
+{
+	glBegin(GL_POINTS);
+	glVertex2i(x,y);
+	glEnd();
+}
+
+void plotInY(int x, int y, int ymin, int ymax)
+{
+    if((y<=ymax) && (y>=ymin)){
+        glBegin(GL_POINTS);
+        glVertex2i(x,y);
+        glEnd();
+    }
+}
+
+void plotInX(int x, int y, int xmin, int xmax)
+{
+    if((x<=xmax) && (x>=xmin)){
+        glBegin(GL_POINTS);
+        glVertex2i(x,y);
+        glEnd();
+    }
+}
+
+
+
+void midPointCircleAlgo(int x1,int y1,int radius)
+{
+	int x = 0;
+	int y = radius;
+
+	int decision = 1 - radius;
+	int deltaE = 3;
+	int deltaSE = -2*radius + 5;
+	plot(x1+x, y1+y);
+
+	while (y > x)
+	{
+		if (decision < 0)
+		{
+			x++;
+			decision += deltaE;
+			deltaE +=2;
+			deltaSE += 2;
+		}
+		else
+		{
+			y--;
+			x++;
+			decision += deltaSE;
+			deltaE += 2;
+			deltaSE +=4;
+		}
+        plot(y1+y, x1+x);
+		plot(y1-y, x1+x);
+		plot(y1+y, x1-x);
+		plot(y1-y, x1-x);
+		plot(x1+x, y1+y);
+		plot(x1+x, y1-y);
+		plot(x1-x, y1+y);
+		plot(x1-x, y1-y);
+	}
+
+}
+
+
+void line(int x1, int y1, int x2, int y2)
+{
+    if (x2 < x1)
+    {
+        line(x2, y2, x1, y1);
+        return;
+    }
+
+    int m = 0;
+    int dx, dy, d, x, y;
+
+    dx = x2 - x1;
+    dy = y2 - y1;
+    d = dx - 2 * dy;
+    y = y1;
+
+    if (dy < 0) {
+        m = -1;
+        dy = -dy;
+    }
+    else if (dy >=0) {
+        m = 1;
+    }
+
+    if(x1==x2){
+        if(y1 < y2){
+            int temp = y1;
+            y1 = y2;
+            y2 = temp;
+        }
+        for(y = y2;y < y1;y++){
+            plot(x1,y);
+            glEnd();
+        }
+        glEnd();
+    }
+    else{
+
+        for (x = x1; x < x2; x++) {
+
+        plot(x, y);
+
+        if (d <= 0) {
+            y += m;
+            d += 2*(dx -dy);
+        }
+        else {
+            d += -2 * dy;
+        }
+        glEnd();
+    }
+
+    }
+
+}
+
+void display()
+{
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(1,1,1,1);
+	glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0,0,0);
+    midPointCircleAlgo(400,400,50);
+    line(0, 350, 100, 350);
+    line(100, 200, 100, 350);
+    line(100, 290, 175, 290);
+    line(250, 200, 250, 290);
+    line(250, 320, 250, 200);
+    line(175, 320, 250, 320);
+    line(175, 200, 175, 320);
+    line(250, 200, 250, 300);
+    line(250, 300, 350, 300);
+    line(250, 300, 400, 300);
+    line(400, 300, 400, 200);
+    glFlush();
+}
+
+int main(int argc, char *argv[])
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowPosition(50, 50);
+    glutInitWindowSize(500, 500);
+    glutCreateWindow("using midpoint algorithm");
+    init_();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}

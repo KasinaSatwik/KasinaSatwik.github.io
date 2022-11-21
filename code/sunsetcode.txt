@@ -1,0 +1,150 @@
+#include <windows.h>
+#include <GL/glut.h>
+
+void init_()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0f, 500.0f, 0.0f, 500.0f);
+}
+
+
+void plot(int x, int y)
+{
+	glBegin(GL_POINTS);
+	glVertex2i(x,y);
+	glEnd();
+}
+
+void plotInY(int x, int y, int ymin, int ymax)
+{
+    if((y<=ymax) && (y>=ymin)){
+        glBegin(GL_POINTS);
+        glVertex2i(x,y);
+        glEnd();
+    }
+}
+
+void plotInX(int x, int y, int xmin, int xmax)
+{
+    if((x<=xmax) && (x>=xmin)){
+        glBegin(GL_POINTS);
+        glVertex2i(x,y);
+        glEnd();
+    }
+}
+
+
+
+void midPointCircleAlgo(int x1,int y1,int radius)
+{
+	int x = 0;
+	int y = radius;
+
+	int decision = 1 - radius;
+	int deltaE = 3;
+	int deltaSE = -2*radius + 5;
+	plot(x1+x, y1+y);
+
+	while (y > x)
+	{
+		if (decision < 0)
+		{
+			x++;
+			decision += deltaE;
+			deltaE +=2;
+			deltaSE += 2;
+		}
+		else
+		{
+			y--;
+			x++;
+			decision += deltaSE;
+			deltaE += 2;
+			deltaSE +=4;
+		}
+        plot(y1+y, x1+x);
+		plot(y1-y, x1+x);
+		plot(y1+y, x1-x);
+		plot(y1-y, x1-x);
+		plot(x1+x, y1+y);
+		plot(x1+x, y1-y);
+		plot(x1-x, y1+y);
+		plot(x1-x, y1-y);
+	}
+
+}
+
+
+
+
+void line(int x1, int y1, int x2, int y2)
+{
+    if (x2 < x1)
+    {
+        line(x2, y2, x1, y1);
+        return;
+    }
+
+    int m = 0;
+    int dx, dy, d, x, y;
+
+    dx = x2 - x1;
+    dy = y2 - y1;
+    d = dx - 2 * dy;
+    y = y1;
+
+    if (dy < 0) {
+        m = -1;
+        dy = -dy;
+    }
+    else if (dy >=0) {
+        m = 1;
+    }
+
+    for (x = x1; x < x2; x++) {
+
+        plot(x, y);
+
+        if (d <= 0) {
+            y += m;
+            d += 2*(dx -dy);
+        }
+        else {
+            d += -2 * dy;
+        }
+        glEnd();
+    }
+
+}
+
+void display()
+{
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.92f,0.69f,0.43f,0);
+	glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0, 1.0, 0.0);
+    line(0, 350, 100, 450);
+    line(100, 450, 200, 350);
+    line(200, 350, 300, 450);
+    line(300, 450, 400, 350);
+    line(400, 350, 500, 450);
+    glColor3f(1,0,0);
+    midPointCircleAlgo(200,350,75);
+
+    glFlush();
+}
+
+int main(int argc, char *argv[])
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowPosition(50, 50);
+    glutInitWindowSize(500, 500);
+    glutCreateWindow("using midpoint algorithm");
+    init_();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
